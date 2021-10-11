@@ -1,0 +1,176 @@
+<Label>:
+    font_name: 'C:/Windows/Fonts/GOTHIC.ttf'
+    font_size: 60
+    halign: "center"
+    markup: True
+	
+<Button>:
+	font_name: 'C:/Windows/Fonts/GOTHIC.ttf'
+	background_normal: ''
+	font_size: 25
+
+<RoundedButton@Button>
+	background_color: (0, 0, 0, 0)
+	background_normal: ''
+	canvas.before:
+		Color:
+			rgba: (0, 0, 1, 1)
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+			radius: [15]
+			
+<Rounded1Button@Button>
+	background_color: (0, 1, 0, 0)
+	background_normal: ''
+	canvas.before:
+		Color:
+			rgba: (1, 0, 0, 1)
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+			radius: [15]
+            
+	
+<TabbedPanelItem>:
+	font_size: 15
+    
+TabbedPanel:
+	alarm_time: hello
+	do_default_tab: False
+	#background_color: (1, 1, 1, 1)
+	#border: [0, 0, 0, 1]
+	background_image: 'C:/Users/Able Valued Client/Pictures/bg.png'
+	font_name: 'C:/Windows/Fonts/GOTHIC.ttf'
+    
+	TabbedPanelItem:
+		text: "Clock"
+        background_color: "#4b0082"
+        background_normal: ''
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: time
+				text: '[b]00[/b]:00:00'
+				font_size: 18
+				halign: 'center'
+        
+	TabbedPanelItem:
+		text: "Stopwatch"
+		background_color: "#4b0082"
+		BoxLayout: 
+			orientation: "vertical"
+
+			Label:
+				id: stopwatch
+				text: '00:00.[size=40]00[/size]'
+				 
+			BoxLayout:
+				height: 90
+				orientation: 'horizontal'
+				padding: 20
+				spacing: 20
+				size_hint: (1, None)
+
+				RoundedButton:
+					id: start_stop
+					text: 'Start'
+					on_press: app.start_stop()
+					
+				Rounded1Button:
+					id: reset
+					text: 'Reset'
+					on_press: app.reset()
+            #background_normal: 'red_button_normal.png'
+            #background_down: 'red_button_down.png'
+	
+    TabbedPanelItem:
+		text: "Alarm"
+        background_color: "#4b0082"
+		BoxLayout: 
+			orientation: "vertical"
+            padding: 20
+			spacing: 20
+            Label:
+                id: hi
+				text: 'Enter time in "HH:MM AM/PM" format:'
+                font_size: 17
+                 
+            TextInput:
+                id: hello
+                multiline: False
+                size_hint: (1, None)
+                font_size: 30
+                
+            BoxLayout:
+				height: 90
+				orientation: 'horizontal'
+				padding: 20
+				spacing: 20
+				size_hint: (1, None)
+			
+                     
+                Rounded1Button: 
+                    text: 'Set Alarm'
+                    on_press: app.press(hello.text)
+                    
+    TabbedPanelItem:
+        text: "World Clock"
+        background_color: "#4b0082"           
+        
+        BoxLayout:
+            #orientation: 'horizontal'
+			size_hint: (1, 1)
+    
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, 1)
+                size: root.size
+                padding: 20
+                spacing: 20
+                Label:
+                    id: okay
+                    halign: "center"
+                    font_size: 22
+                    text: 
+        
+                Label:
+                    id: okay1
+                    font_size: 20
+                    text: 
+                    
+                Label:
+                    id: okay2
+                    halign: "center"
+                    font_size: 22
+                    text: 
+        
+                Label:
+                    id: okay3
+                    font_size: 20
+                    text: 
+                    
+                Label:
+                    id: okay4
+                    halign: "center"
+                    font_size: 22
+                    text: 
+        
+                Label:
+                    id: okay5
+                    font_size: 20
+                    text:
+
+                Label:
+                    id: okay6
+                    halign: "center"
+                    font_size: 22
+                    text: 
+        
+                Label:
+                    id: okay7
+                    font_size: 20
+                    text: 
+    
+           
