@@ -165,13 +165,14 @@ class HourglassApp(App):
     def begin(self, cd_start):
         delta = self.delta - datetime.now()
         delta = str(delta)
-        print(delta)
         self.root.ids.show.text = '[size=50] 0' + delta[0:7] + '[/size]'
         
         if delta[0:7]  == "0:00:00":
             #self.sound.play()
             '0' + delta[0:7]
-            self.stop()   
+            self.sound = SoundLoader.load('C:/Users/Able Valued Client/Downloads/mixkit-rooster-crowing-in-the-morning-2462.wav')
+            self.sound.play()
+            self.reset()   
 
     def toggle(self):
         if self.running:
