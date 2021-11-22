@@ -110,8 +110,7 @@ class HourglassApp(App):
         self.sw_seconds = 0
         
     def press(self, alarm_time):
-        x = re.findall("[a-zA-Z]", alarm_time)
-        if len(alarm_time) != 8 or x :
+        if len(alarm_time) != 8:
             self.root.ids.check_time.text = "Invalid time format!\nTry add a zero before the hour \nif it's less than 10 and or add PM/AM"
         else:
             if int(alarm_time[0:2]) > 12:
