@@ -2,15 +2,13 @@ from kivy.config import Config
 Config.set('graphics', 'resizable', False)
 from kivy.app import App
 import pytz
-from datetime import timedelta
-from datetime import datetime
+from datetime import datetime, timedelta
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
 from playsound import playsound  
 from time import strftime
 import re
-from kivy.properties import StringProperty
 
 Window.size = (500, 500)
 
@@ -20,25 +18,10 @@ class HourglassApp(App):
 
     alarm_time = " "
     
-    running = False
-    going = False
-        #self.sound = SoundLoader.load('bell.wav')
-        #self.ids.button.text = "Fridge"    
+    running = False  
     
     def on_start(self):    
         Clock.schedule_interval(self.update, 0)  
-        
-        self.root.ids.text_input.text = '00:00:00'
-        
-        self.countdown = self.root.ids.text_input.text
-        h = self.countdown[0:2]
-        m = self.countdown[3:5]
-        s = self.countdown[6:8]
-        h = int(h)
-        m = int(m)
-        s = int(s)
-        
-        self.delta = datetime.now() + timedelta(hours=h, minutes=m, seconds = s)
         
     def update(self, nap):  
         self.root.ids.time.text = strftime('[size=80][font=GOTHICB.ttf]%I[/font]:%M %p[/size]\n %a, %B %d')
@@ -52,7 +35,7 @@ class HourglassApp(App):
                                         (int(m), int(s), int(s * 100 % 100)))
                                               
         if self.alarm_time == strftime('%I:%M %p'):
-            #print(strftime('%S'))
+            
             if strftime('%S') == '00' and strftime('%S') < '09':
                 self.root.ids.check_time.text = '[size=60]Wake Up![/size]'
                 self.sound = SoundLoader.load('C:/Users/Able Valued Client/Downloads/Alarm Clock_alarm.wav')
@@ -147,7 +130,7 @@ class HourglassApp(App):
                     Clock.schedule_interval(self.begin, 0.05)
                       
     def reset(self): 
-        #delta = str(self.delta)
+        
         self.root.ids.button.text = 'Start' 
         self.root.ids.show.text = 'Enter the time to countdown in this format "HH:MM:SS"\n For example, [font=GOTHICB]00:00:30[/font]'
         self.root.ids.text_input.text = '00:00:00'
@@ -167,7 +150,7 @@ class HourglassApp(App):
         self.root.ids.show.text = '[size=50] 0' + delta[0:7] + '[/size]'
         
         if delta[0:7]  == "0:00:00":
-            #self.sound.play()
+           
             '0' + delta[0:7]
             self.sound = SoundLoader.load('C:/Users/Able Valued Client/Downloads/mixkit-rooster-crowing-in-the-morning-2462.wav')
             self.sound.play()
