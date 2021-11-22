@@ -105,21 +105,20 @@ class HourglassApp(App):
                 self.root.ids.check_time.text = "Setting the alarm now..."
             
     def start(self):       
-        x = self.root.ids.text_input.text 
-        y = re.findall("[a-zA-Z]", x)
-        if self.root.ids.text_input.text == '' or len(x) != 8 or y:
+        cd_time = self.root.ids.text_input.text 
+        check = re.findall("[a-zA-Z]", cd_time)
+        if cd_time == '' or len(cd_time) != 8 or check:
             self.root.ids.show.text = 'Please enter the time like this "00:00:05"'     
-        elif self.root.ids.text_input.text == '00:00:00':
+        elif cd_time == '00:00:00':
             Clock.unschedule(self.begin)
         elif self.root.ids.button.text == 'Reset':
             self.reset()
             
         else:
             self.root.ids.button.text = 'Reset'
-            self.countdown = self.root.ids.text_input.text
-            h = self.countdown[0:2]
-            m = self.countdown[3:5]
-            s = self.countdown[6:8]
+            h = cd_time[0:2]
+            m = cd_time[3:5]
+            s = cd_time[6:8]
             h = int(h)
             m = int(m)
             s = int(s)
